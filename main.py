@@ -7,6 +7,7 @@ import json
 import graphrag.api as api
 from graphrag.config.load_config import load_config
 
+# Change this to local project path
 path = Path(r"C:\Coding\graphrag")
 config = load_config(path)
 
