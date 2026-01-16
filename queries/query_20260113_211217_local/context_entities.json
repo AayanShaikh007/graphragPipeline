@@ -1,0 +1,86 @@
+[
+  {
+    "id":"2",
+    "entity":"UNIVERSITY OF X",
+    "description":"University of X is an academic institution where robotics research and development, including experimental design and prototyping, is conducted",
+    "number of relationships":"2",
+    "in_context":true
+  },
+  {
+    "id":"8",
+    "entity":"H2@HOME",
+    "description":"H2@Home is a project developed for the Engineering Competition 2025, focused on decentralized hydrogen generation systems",
+    "number of relationships":"1",
+    "in_context":true
+  },
+  {
+    "id":"3",
+    "entity":"HACK THE NORTH 2025",
+    "description":"Hack the North 2025 is a collaborative hackathon event where participants rapidly develop innovative projects",
+    "number of relationships":"4",
+    "in_context":true
+  },
+  {
+    "id":"0",
+    "entity":"OUTLIER AI",
+    "description":"Outlier AI is a company specializing in AI data annotation, where visual data is labeled and described for AI model training purposes",
+    "number of relationships":"1",
+    "in_context":true
+  },
+  {
+    "id":"10",
+    "entity":"GROUP APP",
+    "description":"Group App is a project designed to help groups organize tasks, events, and communication, developed in a collaborative environment",
+    "number of relationships":"1",
+    "in_context":true
+  },
+  {
+    "id":"6",
+    "entity":"SAMUEL NAMARA",
+    "description":"Samuel Namara is a robotics research assistant preparing to support experimental design and prototyping at University of X",
+    "number of relationships":"1",
+    "in_context":true
+  },
+  {
+    "id":"9",
+    "entity":"SUD - SMART UNDERWRITING DASHBOARD",
+    "description":"SUD is a project developed at Hack the North 2025 to streamline insurance underwriting decisions using AI and process optimization",
+    "number of relationships":"1",
+    "in_context":true
+  },
+  {
+    "id":"4",
+    "entity":"ENGINEERING COMPETITION 2025",
+    "description":"The Engineering Competition 2025 is a university-hosted event where students compete in engineering challenges, with awards for top projects",
+    "number of relationships":"3",
+    "in_context":true
+  },
+  {
+    "id":"7",
+    "entity":"IEEE STUDENT BRANCH WEBSITE",
+    "description":"The website developed and maintained by the University IEEE Student Branch, providing event information and resources for members",
+    "number of relationships":"1",
+    "in_context":true
+  },
+  {
+    "id":"1",
+    "entity":"UNIVERSITY IEEE STUDENT BRANCH",
+    "description":"The University IEEE Student Branch is a student-led organization focused on technical initiatives, workshops, and events related to engineering and technology",
+    "number of relationships":"4",
+    "in_context":true
+  },
+  {
+    "id":"11",
+    "entity":"CANADIAN UNIVERSITY",
+    "description":"",
+    "number of relationships":"1",
+    "in_context":true
+  },
+  {
+    "id":"5",
+    "entity":"CITY, ON",
+    "description":"City, ON is a location in Ontario, Canada, where various educational and professional activities are based",
+    "number of relationships":"6",
+    "in_context":true
+  }
+]

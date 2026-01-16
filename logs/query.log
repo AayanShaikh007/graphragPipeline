@@ -1,0 +1,1764 @@
+2026-01-13 21:00:25.0162 - WARNING - graphrag.query.structured_search.global_search.search - Warning: All map responses have score 0 (i.e., no relevant information found from the dataset), returning a canned 'I do not know' answer. You can try enabling `allow_general_knowledge` to encourage the LLM to incorporate relevant general knowledge, at the risk of increasing hallucinations.
+2026-01-13 21:00:39.0965 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.APIError: AzureException APIError - 
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 421, in acompletion
+    headers, response = await self.make_azure_openai_chat_completion_request(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 190, in async_wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 166, in make_azure_openai_chat_completion_request
+    raw_response = await azure_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_legacy_response.py", line 381, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2678, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1797, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1532, in request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 274, in handle_async_request
+    response = await self._make_aiohttp_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 240, in _make_aiohttp_request
+    response = await client_session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 757, in _connect_and_send_request
+    await resp.start(conn)
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client_reqrep.py", line 539, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\streams.py", line 703, in read
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 609, in acompletion
+    response = await init_response
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 461, in acompletion
+    raise AzureOpenAIError(status_code=500, message=str(e))
+litellm.llms.azure.common_utils.AzureOpenAIError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\services\retry\exponential_retry.py", line 71, in aretry
+    return await func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\chat_model.py", line 109, in _base_acompletion
+    return await acompletion(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1915, in wrapper_async
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1759, in wrapper_async
+    result = await original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 628, in acompletion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2346, in exception_type
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2184, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: AzureException APIError - 
+2026-01-13 21:00:39.0988 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.APIError: AzureException APIError - 
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 421, in acompletion
+    headers, response = await self.make_azure_openai_chat_completion_request(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 190, in async_wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 166, in make_azure_openai_chat_completion_request
+    raw_response = await azure_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_legacy_response.py", line 381, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2678, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1797, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1532, in request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 274, in handle_async_request
+    response = await self._make_aiohttp_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 240, in _make_aiohttp_request
+    response = await client_session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 757, in _connect_and_send_request
+    await resp.start(conn)
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client_reqrep.py", line 539, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\streams.py", line 703, in read
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 609, in acompletion
+    response = await init_response
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 461, in acompletion
+    raise AzureOpenAIError(status_code=500, message=str(e))
+litellm.llms.azure.common_utils.AzureOpenAIError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\services\retry\exponential_retry.py", line 71, in aretry
+    return await func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\chat_model.py", line 109, in _base_acompletion
+    return await acompletion(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1915, in wrapper_async
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1759, in wrapper_async
+    result = await original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 628, in acompletion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2346, in exception_type
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2184, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: AzureException APIError - 
+2026-01-13 21:00:40.0007 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.APIError: AzureException APIError - 
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 421, in acompletion
+    headers, response = await self.make_azure_openai_chat_completion_request(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 190, in async_wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 166, in make_azure_openai_chat_completion_request
+    raw_response = await azure_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_legacy_response.py", line 381, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2678, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1797, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1532, in request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 274, in handle_async_request
+    response = await self._make_aiohttp_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 240, in _make_aiohttp_request
+    response = await client_session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 757, in _connect_and_send_request
+    await resp.start(conn)
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client_reqrep.py", line 539, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\streams.py", line 703, in read
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 609, in acompletion
+    response = await init_response
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 461, in acompletion
+    raise AzureOpenAIError(status_code=500, message=str(e))
+litellm.llms.azure.common_utils.AzureOpenAIError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\services\retry\exponential_retry.py", line 71, in aretry
+    return await func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\chat_model.py", line 109, in _base_acompletion
+    return await acompletion(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1915, in wrapper_async
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1759, in wrapper_async
+    result = await original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 628, in acompletion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2346, in exception_type
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2184, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: AzureException APIError - 
+2026-01-13 21:00:40.0026 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.APIError: AzureException APIError - 
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 421, in acompletion
+    headers, response = await self.make_azure_openai_chat_completion_request(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 190, in async_wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 166, in make_azure_openai_chat_completion_request
+    raw_response = await azure_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_legacy_response.py", line 381, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2678, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1797, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1532, in request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 274, in handle_async_request
+    response = await self._make_aiohttp_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 240, in _make_aiohttp_request
+    response = await client_session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 757, in _connect_and_send_request
+    await resp.start(conn)
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client_reqrep.py", line 539, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\streams.py", line 703, in read
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 609, in acompletion
+    response = await init_response
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 461, in acompletion
+    raise AzureOpenAIError(status_code=500, message=str(e))
+litellm.llms.azure.common_utils.AzureOpenAIError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\services\retry\exponential_retry.py", line 71, in aretry
+    return await func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\chat_model.py", line 109, in _base_acompletion
+    return await acompletion(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1915, in wrapper_async
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1759, in wrapper_async
+    result = await original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 628, in acompletion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2346, in exception_type
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2184, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: AzureException APIError - 
+2026-01-13 21:03:03.0267 - WARNING - graphrag.query.structured_search.global_search.search - Warning: All map responses have score 0 (i.e., no relevant information found from the dataset), returning a canned 'I do not know' answer. You can try enabling `allow_general_knowledge` to encourage the LLM to incorporate relevant general knowledge, at the risk of increasing hallucinations.
+2026-01-13 21:03:15.0675 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.APIError: AzureException APIError - 
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 421, in acompletion
+    headers, response = await self.make_azure_openai_chat_completion_request(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 190, in async_wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 166, in make_azure_openai_chat_completion_request
+    raw_response = await azure_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_legacy_response.py", line 381, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2678, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1797, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1532, in request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 274, in handle_async_request
+    response = await self._make_aiohttp_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 240, in _make_aiohttp_request
+    response = await client_session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 757, in _connect_and_send_request
+    await resp.start(conn)
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client_reqrep.py", line 539, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\streams.py", line 703, in read
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 609, in acompletion
+    response = await init_response
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 461, in acompletion
+    raise AzureOpenAIError(status_code=500, message=str(e))
+litellm.llms.azure.common_utils.AzureOpenAIError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\services\retry\exponential_retry.py", line 71, in aretry
+    return await func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\chat_model.py", line 109, in _base_acompletion
+    return await acompletion(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1915, in wrapper_async
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1759, in wrapper_async
+    result = await original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 628, in acompletion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2346, in exception_type
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2184, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: AzureException APIError - 
+2026-01-13 21:03:15.0700 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.APIError: AzureException APIError - 
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 421, in acompletion
+    headers, response = await self.make_azure_openai_chat_completion_request(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 190, in async_wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 166, in make_azure_openai_chat_completion_request
+    raw_response = await azure_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_legacy_response.py", line 381, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2678, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1797, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1532, in request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 274, in handle_async_request
+    response = await self._make_aiohttp_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 240, in _make_aiohttp_request
+    response = await client_session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 757, in _connect_and_send_request
+    await resp.start(conn)
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client_reqrep.py", line 539, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\streams.py", line 703, in read
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 609, in acompletion
+    response = await init_response
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 461, in acompletion
+    raise AzureOpenAIError(status_code=500, message=str(e))
+litellm.llms.azure.common_utils.AzureOpenAIError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\services\retry\exponential_retry.py", line 71, in aretry
+    return await func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\chat_model.py", line 109, in _base_acompletion
+    return await acompletion(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1915, in wrapper_async
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1759, in wrapper_async
+    result = await original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 628, in acompletion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2346, in exception_type
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2184, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: AzureException APIError - 
+2026-01-13 21:03:15.0721 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.APIError: AzureException APIError - 
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 421, in acompletion
+    headers, response = await self.make_azure_openai_chat_completion_request(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 190, in async_wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 166, in make_azure_openai_chat_completion_request
+    raw_response = await azure_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_legacy_response.py", line 381, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2678, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1797, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1532, in request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 274, in handle_async_request
+    response = await self._make_aiohttp_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 240, in _make_aiohttp_request
+    response = await client_session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 757, in _connect_and_send_request
+    await resp.start(conn)
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client_reqrep.py", line 539, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\streams.py", line 703, in read
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 609, in acompletion
+    response = await init_response
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 461, in acompletion
+    raise AzureOpenAIError(status_code=500, message=str(e))
+litellm.llms.azure.common_utils.AzureOpenAIError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\services\retry\exponential_retry.py", line 71, in aretry
+    return await func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\chat_model.py", line 109, in _base_acompletion
+    return await acompletion(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1915, in wrapper_async
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1759, in wrapper_async
+    result = await original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 628, in acompletion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2346, in exception_type
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2184, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: AzureException APIError - 
+2026-01-13 21:03:15.0741 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.APIError: AzureException APIError - 
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 421, in acompletion
+    headers, response = await self.make_azure_openai_chat_completion_request(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 190, in async_wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 166, in make_azure_openai_chat_completion_request
+    raw_response = await azure_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_legacy_response.py", line 381, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2678, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1797, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1532, in request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 274, in handle_async_request
+    response = await self._make_aiohttp_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 240, in _make_aiohttp_request
+    response = await client_session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 757, in _connect_and_send_request
+    await resp.start(conn)
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client_reqrep.py", line 539, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\streams.py", line 703, in read
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 609, in acompletion
+    response = await init_response
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 461, in acompletion
+    raise AzureOpenAIError(status_code=500, message=str(e))
+litellm.llms.azure.common_utils.AzureOpenAIError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\services\retry\exponential_retry.py", line 71, in aretry
+    return await func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\chat_model.py", line 109, in _base_acompletion
+    return await acompletion(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1915, in wrapper_async
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1759, in wrapper_async
+    result = await original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 628, in acompletion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2346, in exception_type
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2184, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: AzureException APIError - 
+2026-01-13 21:04:25.0653 - WARNING - graphrag.query.structured_search.global_search.search - Warning: All map responses have score 0 (i.e., no relevant information found from the dataset), returning a canned 'I do not know' answer. You can try enabling `allow_general_knowledge` to encourage the LLM to incorporate relevant general knowledge, at the risk of increasing hallucinations.
+2026-01-13 21:04:39.0289 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.APIError: AzureException APIError - 
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 421, in acompletion
+    headers, response = await self.make_azure_openai_chat_completion_request(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 190, in async_wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 166, in make_azure_openai_chat_completion_request
+    raw_response = await azure_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_legacy_response.py", line 381, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2678, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1797, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1532, in request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 274, in handle_async_request
+    response = await self._make_aiohttp_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 240, in _make_aiohttp_request
+    response = await client_session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 757, in _connect_and_send_request
+    await resp.start(conn)
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client_reqrep.py", line 539, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\streams.py", line 703, in read
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 609, in acompletion
+    response = await init_response
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 461, in acompletion
+    raise AzureOpenAIError(status_code=500, message=str(e))
+litellm.llms.azure.common_utils.AzureOpenAIError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\services\retry\exponential_retry.py", line 71, in aretry
+    return await func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\chat_model.py", line 109, in _base_acompletion
+    return await acompletion(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1915, in wrapper_async
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1759, in wrapper_async
+    result = await original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 628, in acompletion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2346, in exception_type
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2184, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: AzureException APIError - 
+2026-01-13 21:04:39.0308 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.APIError: AzureException APIError - 
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 421, in acompletion
+    headers, response = await self.make_azure_openai_chat_completion_request(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 190, in async_wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 166, in make_azure_openai_chat_completion_request
+    raw_response = await azure_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_legacy_response.py", line 381, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2678, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1797, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1532, in request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 274, in handle_async_request
+    response = await self._make_aiohttp_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 240, in _make_aiohttp_request
+    response = await client_session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 757, in _connect_and_send_request
+    await resp.start(conn)
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client_reqrep.py", line 539, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\streams.py", line 703, in read
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 609, in acompletion
+    response = await init_response
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 461, in acompletion
+    raise AzureOpenAIError(status_code=500, message=str(e))
+litellm.llms.azure.common_utils.AzureOpenAIError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\services\retry\exponential_retry.py", line 71, in aretry
+    return await func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\chat_model.py", line 109, in _base_acompletion
+    return await acompletion(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1915, in wrapper_async
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1759, in wrapper_async
+    result = await original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 628, in acompletion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2346, in exception_type
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2184, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: AzureException APIError - 
+2026-01-13 21:04:39.0330 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.APIError: AzureException APIError - 
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 421, in acompletion
+    headers, response = await self.make_azure_openai_chat_completion_request(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 190, in async_wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 166, in make_azure_openai_chat_completion_request
+    raw_response = await azure_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_legacy_response.py", line 381, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2678, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1797, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1532, in request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 274, in handle_async_request
+    response = await self._make_aiohttp_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 240, in _make_aiohttp_request
+    response = await client_session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 757, in _connect_and_send_request
+    await resp.start(conn)
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client_reqrep.py", line 539, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\streams.py", line 703, in read
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 609, in acompletion
+    response = await init_response
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 461, in acompletion
+    raise AzureOpenAIError(status_code=500, message=str(e))
+litellm.llms.azure.common_utils.AzureOpenAIError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\services\retry\exponential_retry.py", line 71, in aretry
+    return await func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\chat_model.py", line 109, in _base_acompletion
+    return await acompletion(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1915, in wrapper_async
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1759, in wrapper_async
+    result = await original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 628, in acompletion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2346, in exception_type
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2184, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: AzureException APIError - 
+2026-01-13 21:04:39.0350 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.APIError: AzureException APIError - 
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 421, in acompletion
+    headers, response = await self.make_azure_openai_chat_completion_request(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 190, in async_wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 166, in make_azure_openai_chat_completion_request
+    raw_response = await azure_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_legacy_response.py", line 381, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2678, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1797, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1532, in request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 274, in handle_async_request
+    response = await self._make_aiohttp_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 240, in _make_aiohttp_request
+    response = await client_session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 757, in _connect_and_send_request
+    await resp.start(conn)
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client_reqrep.py", line 539, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\streams.py", line 703, in read
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 609, in acompletion
+    response = await init_response
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 461, in acompletion
+    raise AzureOpenAIError(status_code=500, message=str(e))
+litellm.llms.azure.common_utils.AzureOpenAIError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\services\retry\exponential_retry.py", line 71, in aretry
+    return await func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\chat_model.py", line 109, in _base_acompletion
+    return await acompletion(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1915, in wrapper_async
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1759, in wrapper_async
+    result = await original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 628, in acompletion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2346, in exception_type
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2184, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: AzureException APIError - 
+2026-01-13 21:12:18.0852 - WARNING - graphrag.query.structured_search.global_search.search - Warning: All map responses have score 0 (i.e., no relevant information found from the dataset), returning a canned 'I do not know' answer. You can try enabling `allow_general_knowledge` to encourage the LLM to incorporate relevant general knowledge, at the risk of increasing hallucinations.
+2026-01-14 20:26:41.0176 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.APIError: AzureException APIError - 
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 421, in acompletion
+    headers, response = await self.make_azure_openai_chat_completion_request(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 190, in async_wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 166, in make_azure_openai_chat_completion_request
+    raw_response = await azure_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_legacy_response.py", line 381, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2678, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1797, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1532, in request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 274, in handle_async_request
+    response = await self._make_aiohttp_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 240, in _make_aiohttp_request
+    response = await client_session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 757, in _connect_and_send_request
+    await resp.start(conn)
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client_reqrep.py", line 539, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\streams.py", line 703, in read
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 609, in acompletion
+    response = await init_response
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 461, in acompletion
+    raise AzureOpenAIError(status_code=500, message=str(e))
+litellm.llms.azure.common_utils.AzureOpenAIError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\services\retry\exponential_retry.py", line 71, in aretry
+    return await func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\chat_model.py", line 109, in _base_acompletion
+    return await acompletion(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1915, in wrapper_async
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1759, in wrapper_async
+    result = await original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 628, in acompletion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2346, in exception_type
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2184, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: AzureException APIError - 
+2026-01-14 20:26:41.0213 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.APIError: AzureException APIError - 
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 421, in acompletion
+    headers, response = await self.make_azure_openai_chat_completion_request(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 190, in async_wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 166, in make_azure_openai_chat_completion_request
+    raw_response = await azure_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_legacy_response.py", line 381, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2678, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1797, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1532, in request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 274, in handle_async_request
+    response = await self._make_aiohttp_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 240, in _make_aiohttp_request
+    response = await client_session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 757, in _connect_and_send_request
+    await resp.start(conn)
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client_reqrep.py", line 539, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\streams.py", line 703, in read
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 609, in acompletion
+    response = await init_response
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 461, in acompletion
+    raise AzureOpenAIError(status_code=500, message=str(e))
+litellm.llms.azure.common_utils.AzureOpenAIError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\services\retry\exponential_retry.py", line 71, in aretry
+    return await func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\chat_model.py", line 109, in _base_acompletion
+    return await acompletion(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1915, in wrapper_async
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1759, in wrapper_async
+    result = await original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 628, in acompletion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2346, in exception_type
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2184, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: AzureException APIError - 
+2026-01-14 20:26:41.0228 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.APIError: AzureException APIError - 
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 421, in acompletion
+    headers, response = await self.make_azure_openai_chat_completion_request(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 190, in async_wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 166, in make_azure_openai_chat_completion_request
+    raw_response = await azure_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_legacy_response.py", line 381, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2678, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1797, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1532, in request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 274, in handle_async_request
+    response = await self._make_aiohttp_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 240, in _make_aiohttp_request
+    response = await client_session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 757, in _connect_and_send_request
+    await resp.start(conn)
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client_reqrep.py", line 539, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\streams.py", line 703, in read
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 609, in acompletion
+    response = await init_response
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 461, in acompletion
+    raise AzureOpenAIError(status_code=500, message=str(e))
+litellm.llms.azure.common_utils.AzureOpenAIError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\services\retry\exponential_retry.py", line 71, in aretry
+    return await func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\chat_model.py", line 109, in _base_acompletion
+    return await acompletion(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1915, in wrapper_async
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1759, in wrapper_async
+    result = await original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 628, in acompletion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2346, in exception_type
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2184, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: AzureException APIError - 
+2026-01-14 20:26:41.0242 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.APIError: AzureException APIError - 
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 421, in acompletion
+    headers, response = await self.make_azure_openai_chat_completion_request(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 190, in async_wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 166, in make_azure_openai_chat_completion_request
+    raw_response = await azure_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_legacy_response.py", line 381, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2678, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1797, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1532, in request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 274, in handle_async_request
+    response = await self._make_aiohttp_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 240, in _make_aiohttp_request
+    response = await client_session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 757, in _connect_and_send_request
+    await resp.start(conn)
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client_reqrep.py", line 539, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\streams.py", line 703, in read
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 609, in acompletion
+    response = await init_response
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 461, in acompletion
+    raise AzureOpenAIError(status_code=500, message=str(e))
+litellm.llms.azure.common_utils.AzureOpenAIError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\services\retry\exponential_retry.py", line 71, in aretry
+    return await func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\chat_model.py", line 109, in _base_acompletion
+    return await acompletion(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1915, in wrapper_async
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1759, in wrapper_async
+    result = await original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 628, in acompletion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2346, in exception_type
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2184, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: AzureException APIError - 
+2026-01-14 20:29:48.0054 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.APIError: AzureException APIError - 
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 421, in acompletion
+    headers, response = await self.make_azure_openai_chat_completion_request(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 190, in async_wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 166, in make_azure_openai_chat_completion_request
+    raw_response = await azure_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_legacy_response.py", line 381, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2678, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1797, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1532, in request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 274, in handle_async_request
+    response = await self._make_aiohttp_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 240, in _make_aiohttp_request
+    response = await client_session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 757, in _connect_and_send_request
+    await resp.start(conn)
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client_reqrep.py", line 539, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\streams.py", line 703, in read
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 609, in acompletion
+    response = await init_response
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 461, in acompletion
+    raise AzureOpenAIError(status_code=500, message=str(e))
+litellm.llms.azure.common_utils.AzureOpenAIError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\services\retry\exponential_retry.py", line 71, in aretry
+    return await func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\chat_model.py", line 109, in _base_acompletion
+    return await acompletion(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1915, in wrapper_async
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1759, in wrapper_async
+    result = await original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 628, in acompletion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2346, in exception_type
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2184, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: AzureException APIError - 
+2026-01-14 20:29:48.0069 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.APIError: AzureException APIError - 
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 421, in acompletion
+    headers, response = await self.make_azure_openai_chat_completion_request(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 190, in async_wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 166, in make_azure_openai_chat_completion_request
+    raw_response = await azure_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_legacy_response.py", line 381, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2678, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1797, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1532, in request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 274, in handle_async_request
+    response = await self._make_aiohttp_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 240, in _make_aiohttp_request
+    response = await client_session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 757, in _connect_and_send_request
+    await resp.start(conn)
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client_reqrep.py", line 539, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\streams.py", line 703, in read
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 609, in acompletion
+    response = await init_response
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 461, in acompletion
+    raise AzureOpenAIError(status_code=500, message=str(e))
+litellm.llms.azure.common_utils.AzureOpenAIError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\services\retry\exponential_retry.py", line 71, in aretry
+    return await func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\chat_model.py", line 109, in _base_acompletion
+    return await acompletion(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1915, in wrapper_async
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1759, in wrapper_async
+    result = await original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 628, in acompletion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2346, in exception_type
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2184, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: AzureException APIError - 
+2026-01-14 20:29:48.0087 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.APIError: AzureException APIError - 
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 421, in acompletion
+    headers, response = await self.make_azure_openai_chat_completion_request(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 190, in async_wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 166, in make_azure_openai_chat_completion_request
+    raw_response = await azure_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_legacy_response.py", line 381, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2678, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1797, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1532, in request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 274, in handle_async_request
+    response = await self._make_aiohttp_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 240, in _make_aiohttp_request
+    response = await client_session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 757, in _connect_and_send_request
+    await resp.start(conn)
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client_reqrep.py", line 539, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\streams.py", line 703, in read
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 609, in acompletion
+    response = await init_response
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 461, in acompletion
+    raise AzureOpenAIError(status_code=500, message=str(e))
+litellm.llms.azure.common_utils.AzureOpenAIError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\services\retry\exponential_retry.py", line 71, in aretry
+    return await func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\chat_model.py", line 109, in _base_acompletion
+    return await acompletion(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1915, in wrapper_async
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1759, in wrapper_async
+    result = await original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 628, in acompletion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2346, in exception_type
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2184, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: AzureException APIError - 
+2026-01-14 20:29:48.0101 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.APIError: AzureException APIError - 
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 421, in acompletion
+    headers, response = await self.make_azure_openai_chat_completion_request(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 190, in async_wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 166, in make_azure_openai_chat_completion_request
+    raw_response = await azure_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_legacy_response.py", line 381, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2678, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1797, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\openai\_base_client.py", line 1532, in request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 274, in handle_async_request
+    response = await self._make_aiohttp_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\custom_httpx\aiohttp_transport.py", line 240, in _make_aiohttp_request
+    response = await client_session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client.py", line 757, in _connect_and_send_request
+    await resp.start(conn)
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\client_reqrep.py", line 539, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\aiohttp\streams.py", line 703, in read
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 609, in acompletion
+    response = await init_response
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\llms\azure\azure.py", line 461, in acompletion
+    raise AzureOpenAIError(status_code=500, message=str(e))
+litellm.llms.azure.common_utils.AzureOpenAIError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\services\retry\exponential_retry.py", line 71, in aretry
+    return await func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\graphrag\language_model\providers\litellm\chat_model.py", line 109, in _base_acompletion
+    return await acompletion(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1915, in wrapper_async
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\utils.py", line 1759, in wrapper_async
+    result = await original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\main.py", line 628, in acompletion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2346, in exception_type
+    raise e
+  File "C:\Coding\graphrag\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2184, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: AzureException APIError - 

@@ -1,0 +1,13 @@
+### Purpose of H2@Home
+
+H2@Home is a project designed to develop and implement automation and monitoring software for a decentralized hydrogen generation system. The primary goal of this project is to enhance the efficiency and insight into hydrogen generation processes through advanced software and hardware integration [Data: Sources (0)].
+
+### Key Features and Functionality
+
+The project includes the creation of a real-time data analytics and control dashboard using React and JavaScript. This dashboard provides live data visualization, component state mapping, and Firebase connectivity over WiFi, which improves the speed of insights by 70% [Data: Sources (0)]. Additionally, the system is programmed to enable communication with relays, gas sensors, and hardware modules through GPIO control, ADC readings, and safety-trigger logic applied across more than five hardware components [Data: Sources (0)].
+
+### Recognition and Achievement
+
+H2@Home was developed as part of the university's Engineering Competition in 2025, where it earned a Gold, 1st Place award. This recognition highlights the project's innovative approach and successful implementation [Data: Sources (0)].
+
+In summary, H2@Home is used for automating and monitoring decentralized hydrogen generation systems, with a focus on improving efficiency, safety, and data-driven insights.

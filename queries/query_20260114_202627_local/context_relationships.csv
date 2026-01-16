@@ -1,0 +1,14 @@
+id,source,target,description,weight,links,in_context
+1,UNIVERSITY IEEE STUDENT BRANCH,"CITY, ON","The University IEEE Student Branch is based in City, ON, where it organizes technical initiatives and events",7.0,5,True
+7,HACK THE NORTH 2025,"CITY, ON","Hack the North 2025 was held in City, ON, where participants collaborated on innovative projects",6.0,5,True
+10,ENGINEERING COMPETITION 2025,"CITY, ON","The Engineering Competition 2025 took place in City, ON, hosted by a university",6.0,5,True
+3,UNIVERSITY IEEE STUDENT BRANCH,HACK THE NORTH 2025,The University IEEE Student Branch may have been involved in Hack the North 2025 through technical initiatives,4.0,2,True
+5,UNIVERSITY OF X,"CITY, ON","University of X is located in City, ON, where robotics research is conducted",7.0,5,True
+0,OUTLIER AI,"CITY, ON","Outlier AI operates remotely but is associated with Waterloo, ON, a city in Ontario",5.0,5,True
+2,UNIVERSITY IEEE STUDENT BRANCH,ENGINEERING COMPETITION 2025,The University IEEE Student Branch likely participated in or supported the Engineering Competition 2025,4.0,2,True
+12,"CITY, ON",CANADIAN UNIVERSITY,"The Canadian university is located in City, ON, where students pursue engineering degrees",7.0,,True
+4,UNIVERSITY IEEE STUDENT BRANCH,IEEE STUDENT BRANCH WEBSITE,The IEEE Student Branch Website was developed and maintained by the University IEEE Student Branch,9.0,2,True
+8,HACK THE NORTH 2025,SUD - SMART UNDERWRITING DASHBOARD,The Smart Underwriting Dashboard was developed during Hack the North 2025 to improve insurance workflows,9.0,1,True
+9,HACK THE NORTH 2025,GROUP APP,The Group App was developed in a collaborative environment at Hack the North 2025,8.0,1,True
+11,ENGINEERING COMPETITION 2025,H2@HOME,"H2@Home was developed as part of the Engineering Competition 2025, winning first place",9.0,2,True
+6,UNIVERSITY OF X,SAMUEL NAMARA,Samuel Namara is preparing to work as a robotics research assistant at University of X,8.0,1,True

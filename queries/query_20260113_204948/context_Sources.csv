@@ -1,0 +1,47 @@
+source_id,text
+0,"First Last
+123-1456-7891|abc@gmail.ca |linkedin.com/in/... |github.com/...
+Education
+(no-name Canadian university)City, ON
+Bachelor of Engineering, Computer Engineering (Co-op) Sep. 2025 – April 2030
+Experience
+AI Data Annotation SpecialistDec. 2025 – Present
+Outlier AI Waterloo, ON (Remote)
+•Labeled and described visual data for AI model training, reviewing1,000+images per month
+•Identified differences in image sets for dataset quality, achieving95% instruction accuracycompliance
+•Contributed to3-5production ready datasets, helping improve model precision
+Technical Projects LeadSep. 2025 – Present
+University IEEE Student Branch City, ON
+•Developed and maintained the club website using React and JavaScript, improving usability and providing a central
+platform for event information and resources that streamlined communication for100+members
+•Coordinated technical initiatives across the club, including planning and integrating hardware and software projects
+into workshops, hackathons, and member events, increasing participation and engagement by65%
+•Designed and fabricated custom PCBs for club workshops, enabling hands-on hardware learning experiences for
+70+participants, and assisted attendees with KiCad, soldering, and troubleshooting during workshop sessions
+Robotics Research Assistant (Incoming)May 2026 – Sep. 2026
+University of x City, ON
+•Preparing to support robotics research and development, including experimental design and prototyping.
+•Set to assist with hardware-software integration on autonomous and sensor-driven systems
+Projects
+H2@Home|C++, JavaScript, React, Git, IoTNov. 2025
+•(university name) Engineering Competition 2025 —Gold, 1st Place
+•Developed and implemented automation and monitoring software for a decentralized hydrogen generation system
+•Built a real-time data analytics and control dashboard inReact and JavaScript, implementing live data
+visualization, component state mapping, andFirebaseconnectivity over WiFi, improving insight speed by70%
+•Programmed theESP32 in C++, enabling communication with relays, gas sensors, and hardware modules
+through GPIO control, ADC readings, and safety-trigger logic, applied across5+ hardware components
+SUD - Smart Underwriting Dashboard|Python, JavaScript, React, DockerSep. 2025
+•Developed a full-stack dashboard to streamline and automate insurance underwriting decisions
+•Improved workflow efficiency by approximately70%by implementing AI agents and process optimization
+•Implemented data visualization features to display key financial and risk metrics for underwriters.
+•Rapidly developed in a collaborative environment at Hack the North 2025
+Group|React, JavaScript, Git, Android StudioAug. 2025
+•Designed and developed a mobile app to help groups organize tasks, events, and communication in one platform.
+•Implemented core features including user authentication, real-time messaging, and morein less than 5 days.
+•Built the front end withReact Nativeand used backend databases (Firebase/Node.js) for real-time data sync.
+•Focused on clean UI/UX design to ensure accessibility and ease of use across devices.
+Technical Skills
+Languages: JavaScript, Python, C/C++, GCC/Clang, Java, HTML/CSS
+Frameworks: React, TailwindCSS, Node.js, Flask, WordPress
+Developer Tools: Git, GitLab, Docker, Google Cloud Platform, Firebase, VS Code, PyCharm, Linux, Raspberry Pi
+"

@@ -1,0 +1,13 @@
+id,entity,description,number of relationships,in_context
+2,UNIVERSITY OF X,"University of X is an academic institution where robotics research and development, including experimental design and prototyping, is conducted",2,True
+8,H2@HOME,"H2@Home is a project developed for the Engineering Competition 2025, focused on decentralized hydrogen generation systems",1,True
+3,HACK THE NORTH 2025,Hack the North 2025 is a collaborative hackathon event where participants rapidly develop innovative projects,4,True
+0,OUTLIER AI,"Outlier AI is a company specializing in AI data annotation, where visual data is labeled and described for AI model training purposes",1,True
+10,GROUP APP,"Group App is a project designed to help groups organize tasks, events, and communication, developed in a collaborative environment",1,True
+6,SAMUEL NAMARA,Samuel Namara is a robotics research assistant preparing to support experimental design and prototyping at University of X,1,True
+9,SUD - SMART UNDERWRITING DASHBOARD,SUD is a project developed at Hack the North 2025 to streamline insurance underwriting decisions using AI and process optimization,1,True
+4,ENGINEERING COMPETITION 2025,"The Engineering Competition 2025 is a university-hosted event where students compete in engineering challenges, with awards for top projects",3,True
+7,IEEE STUDENT BRANCH WEBSITE,"The website developed and maintained by the University IEEE Student Branch, providing event information and resources for members",1,True
+1,UNIVERSITY IEEE STUDENT BRANCH,"The University IEEE Student Branch is a student-led organization focused on technical initiatives, workshops, and events related to engineering and technology",4,True
+11,CANADIAN UNIVERSITY,,1,True
+5,"CITY, ON","City, ON is a location in Ontario, Canada, where various educational and professional activities are based",6,True

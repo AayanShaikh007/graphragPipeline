@@ -1,0 +1,119 @@
+[
+  {
+    "id":"1",
+    "source":"UNIVERSITY IEEE STUDENT BRANCH",
+    "target":"CITY, ON",
+    "description":"The University IEEE Student Branch is based in City, ON, where it organizes technical initiatives and events",
+    "weight":"7.0",
+    "links":"6",
+    "in_context":true
+  },
+  {
+    "id":"7",
+    "source":"HACK THE NORTH 2025",
+    "target":"CITY, ON",
+    "description":"Hack the North 2025 was held in City, ON, where participants collaborated on innovative projects",
+    "weight":"6.0",
+    "links":"6",
+    "in_context":true
+  },
+  {
+    "id":"10",
+    "source":"ENGINEERING COMPETITION 2025",
+    "target":"CITY, ON",
+    "description":"The Engineering Competition 2025 took place in City, ON, hosted by a university",
+    "weight":"6.0",
+    "links":"6",
+    "in_context":true
+  },
+  {
+    "id":"3",
+    "source":"UNIVERSITY IEEE STUDENT BRANCH",
+    "target":"HACK THE NORTH 2025",
+    "description":"The University IEEE Student Branch may have been involved in Hack the North 2025 through technical initiatives",
+    "weight":"4.0",
+    "links":"3",
+    "in_context":true
+  },
+  {
+    "id":"5",
+    "source":"UNIVERSITY OF X",
+    "target":"CITY, ON",
+    "description":"University of X is located in City, ON, where robotics research is conducted",
+    "weight":"7.0",
+    "links":"6",
+    "in_context":true
+  },
+  {
+    "id":"0",
+    "source":"OUTLIER AI",
+    "target":"CITY, ON",
+    "description":"Outlier AI operates remotely but is associated with Waterloo, ON, a city in Ontario",
+    "weight":"5.0",
+    "links":"6",
+    "in_context":true
+  },
+  {
+    "id":"2",
+    "source":"UNIVERSITY IEEE STUDENT BRANCH",
+    "target":"ENGINEERING COMPETITION 2025",
+    "description":"The University IEEE Student Branch likely participated in or supported the Engineering Competition 2025",
+    "weight":"4.0",
+    "links":"3",
+    "in_context":true
+  },
+  {
+    "id":"12",
+    "source":"CITY, ON",
+    "target":"CANADIAN UNIVERSITY",
+    "description":"The Canadian university is located in City, ON, where students pursue engineering degrees",
+    "weight":"7.0",
+    "links":"6",
+    "in_context":true
+  },
+  {
+    "id":"4",
+    "source":"UNIVERSITY IEEE STUDENT BRANCH",
+    "target":"IEEE STUDENT BRANCH WEBSITE",
+    "description":"The IEEE Student Branch Website was developed and maintained by the University IEEE Student Branch",
+    "weight":"9.0",
+    "links":"3",
+    "in_context":true
+  },
+  {
+    "id":"8",
+    "source":"HACK THE NORTH 2025",
+    "target":"SUD - SMART UNDERWRITING DASHBOARD",
+    "description":"The Smart Underwriting Dashboard was developed during Hack the North 2025 to improve insurance workflows",
+    "weight":"9.0",
+    "links":"1",
+    "in_context":true
+  },
+  {
+    "id":"9",
+    "source":"HACK THE NORTH 2025",
+    "target":"GROUP APP",
+    "description":"The Group App was developed in a collaborative environment at Hack the North 2025",
+    "weight":"8.0",
+    "links":"1",
+    "in_context":true
+  },
+  {
+    "id":"11",
+    "source":"ENGINEERING COMPETITION 2025",
+    "target":"H2@HOME",
+    "description":"H2@Home was developed as part of the Engineering Competition 2025, winning first place",
+    "weight":"9.0",
+    "links":"1",
+    "in_context":true
+  },
+  {
+    "id":"6",
+    "source":"UNIVERSITY OF X",
+    "target":"SAMUEL NAMARA",
+    "description":"Samuel Namara is preparing to work as a robotics research assistant at University of X",
+    "weight":"8.0",
+    "links":"1",
+    "in_context":true
+  }
+]
